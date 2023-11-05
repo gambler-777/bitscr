@@ -122,7 +122,7 @@ function get_data_from_server_interval(tickers_with_TFs_and_periods){
         success: function (data) {
             //console.log(data.replace(/'/g, '"'));
             main_dict_json = JSON.parse(data.replace(/'/g, '"'));
-            console.log("main_dict_json (get_data_from_server_interval) :");
+            console.log("MAIN_DICT_JSON (get_data_from_server_interval) :");
             console.log(main_dict_json);
             return true;
         }

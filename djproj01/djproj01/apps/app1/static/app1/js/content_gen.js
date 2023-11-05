@@ -160,7 +160,7 @@ function create_chart(ticker_list_array) {
 }
 
 function SMAo_calc(klines, base) {
-
+    console.log('kline dict length', Object.keys(klines).length);
 }
 
 function SMAoD_calc(klines, base) {
@@ -453,23 +453,23 @@ function set_indicators_data_to_tables() {
         console.log(tick, kline_TF3_key, ': ');
         console.log(kline_TF3_dict);
 
-        let TF1_SMAo = SMAo_calc(kline_TF1_dict, tickers_with_TFs_and_periods[kline_TF1_key + 'SMAo_base_disp']);
-        let TF1_SMAc = SMAc_calc(kline_TF1_dict, tickers_with_TFs_and_periods[kline_TF1_key + 'SMAc_base_disp']);
-        let TF1_CCI = CCI_calc(kline_TF1_dict, tickers_with_TFs_and_periods[kline_TF1_key + 'CCI_base_disp']);
-        let TF1_RSI = RSI_calc(kline_TF1_dict, tickers_with_TFs_and_periods[kline_TF1_key + 'RSI_base_disp']);
-        let TF1_VOLSMA = VOLSMA_calc(kline_TF1_dict, tickers_with_TFs_and_periods[kline_TF1_key + 'VOLSMA_base_disp']);
+        let TF1_SMAo = SMAo_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'SMAo_base_disp']));
+        let TF1_SMAc = SMAc_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'SMAc_base_disp']);
+        let TF1_CCI = CCI_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'CCI_base_disp']));
+        let TF1_RSI = RSI_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'RSI_base_disp']));
+        let TF1_VOLSMA = VOLSMA_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'VOLSMA_base_disp']));
 
-        let TF2_SMAo = SMAo_calc(kline_TF2_dict, tickers_with_TFs_and_periods[kline_TF2_key + 'SMAo_base_disp']);
-        let TF2_SMAc = SMAc_calc(kline_TF2_dict, tickers_with_TFs_and_periods[kline_TF2_key + 'SMAc_base_disp']);
-        let TF2_CCI = CCI_calc(kline_TF2_dict, tickers_with_TFs_and_periods[kline_T21_key + 'CCI_base_disp']);
-        let TF2_RSI = RSI_calc(kline_TF2_dict, tickers_with_TFs_and_periods[kline_TF2_key + 'RSI_base_disp']);
-        let TF2_VOLSMA = VOLSMA_calc(kline_TF2_dict, tickers_with_TFs_and_periods[kline_TF2_key + 'VOLSMA_base_disp']);
+        let TF2_SMAo = SMAo_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'SMAo_base_disp']));
+        let TF2_SMAc = SMAc_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'SMAc_base_disp']));
+        let TF2_CCI = CCI_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'CCI_base_disp']));
+        let TF2_RSI = RSI_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'RSI_base_disp']));
+        let TF2_VOLSMA = VOLSMA_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'VOLSMA_base_disp']));
 
-        let TF3_SMAo = SMAo_calc(kline_TF3_dict, tickers_with_TFs_and_periods[kline_TF3_key + 'SMAo_base_disp']);
-        let TF3_SMAc = SMAc_calc(kline_TF3_dict, tickers_with_TFs_and_periods[kline_TF3_key + 'SMAc_base_disp']);
-        let TF3_CCI = CCI_calc(kline_TF3_dict, tickers_with_TFs_and_periods[kline_TF3_key + 'CCI_base_disp']);
-        let TF3_RSI = RSI_calc(kline_TF3_dict, tickers_with_TFs_and_periods[kline_TF3_key + 'RSI_base_disp']);
-        let TF3_VOLSMA = VOLSMA_calc(kline_TF3_dict, tickers_with_TFs_and_periods[kline_TF3_key + 'VOLSMA_base_disp']);
+        let TF3_SMAo = SMAo_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'SMAo_base_disp']));
+        let TF3_SMAc = SMAc_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'SMAc_base_disp']));
+        let TF3_CCI = CCI_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'CCI_base_disp']));
+        let TF3_RSI = RSI_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'RSI_base_disp']));
+        let TF3_VOLSMA = VOLSMA_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'VOLSMA_base_disp']));
 
         document.getElementById(kline_TF1_key + '_SMAo_value_disp').innerHTML = '';
         document.getElementById(kline_TF2_key + '_SMAo_value_disp').innerHTML = '';
