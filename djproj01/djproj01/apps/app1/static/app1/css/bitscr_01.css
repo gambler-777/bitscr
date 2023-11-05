@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+
+body {
+    font-family: 'Exo 2';
+}
+
+.background-blue {
+    background-color: #8CD8F2; /*8CD8F2 10b1e8*/
+}
+#btn-settings {
+    height: 35px;
+    max-width: 216px;
+    margin: 9px 5px 9px 5px;
+    position: static;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+#btn-settings:hover {
+    background-color: #aaa ;/*#10b1e8;*/
+    color: #555;
+}
+
+.logo {
+    margin: 7px 9px 5px 5px;
+}
+
+.btn-settings-burger-sign-svg {
+    margin: 9px 10px 14px;
+    display: inline-block;
+}
+
+.footer-h5-font {
+    color: #fff;
+}
+
+.btn-settings-label {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    margin: 0 auto;
+    position: relative;
+    left: 40px;
+}
+
+.main-container {
+    min-height: 400px;
+    background-color: #f6f6f6;
+}
+
+.pop-up {
+    /*display: none;*/
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+    transform: translateY(-40%) translateX(-30%) scale(0);
+    transition: 0.2s ease-in-out;
+}
+
+.pop-up.active {
+    /*display: block;*/
+    transform: translateY(0%) translateX(0%) scale(1);
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.pop-up-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: scroll;
+}
+
+.pop-up-body {
+    margin: auto;
+    min-width: 500px;
+    background-color: #fff;
+    border-radius: 0px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+
+}
+
+.pop-up-body p {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 20px auto;
+    color: #2C3C4D;
+}
+
+.pop-up-body label {
+    background-color: #fff;
+    width: 130px;
+    border: none;
+    position: relative;
+    margin: 2px;
+    text-align: right;
+    padding-right: 5px;
+    font-size: 14px;
+    color: #2C3C4D;
+    transition-duration: 0.2s;
+}
+
+.pop-up-body label:hover {
+    background-color: #8CD8F2;
+    color: #fff;
+}
+
+.pop-up-body input {
+    display: inline-block;
+    position: absolute;
+    /*margin: 25px auto 0 auto;
+    width: 330px;
+    padding: 17px 20px;*/
+    left: 5px;
+    top: 5px;
+    background-color: #e5e5e5;
+    border-radius: 0px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+
+}
+
+#ticker-list-form {
+    background-color: #f6f6f6;
+    margin: 0px;
+    min-height: 100px;
+    padding: 32px;
+}
+
+.pop-up-body button {
+    cursor: pointer;
+    display: block;
+    width: 200px;
+    height: 35px;
+    position: relative;
+    margin: 0px auto;
+    padding: 0px 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #8CD8F2;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.pop-up-body button:hover {
+    background-color: #aaa ;/*#10b1e8;*/
+    color: #555;
+}
+
+.pop-up-close {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    cursor: pointer;
+    font-size: 21px;
+}
+
+.content-container {
+    max-width: 1440px;
+    margin: 0px auto;
+    padding-left: 60px;
+}
+
+.line-under-chart {
+    width: 600px;
+    height: 6px;
+    background-color: #8CD8F2;
+}
+
+.tab-simple-line {
+    margin-top: 2px;
+    color: #2C3C4D;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: left;
+}
+
+.tab-header-line {
+    margin-top: 19px;
+    font-weight: 700;
+    color:  #8CD8F2;
+    font-size: 14px;
+    text-align: left;
+}
+
+.tab-row {
+    width: 600px;
+    height: 32px;
+    border: solid 1px;
+    border-color: #D9DADB;
+    background-color: #FFF;
+}
+
+.settings-tab-gear-header {
+    margin: 4px 2px auto 9px;
+    display: inline-block;
+    position: relative;
+    bottom: 0px;
+    }
+
+.settings-tab-gear {
+    margin: 4px 2px auto 9px;
+    display: inline-block;
+    position: relative;
+    bottom: 2px;
+    }
+
+.tab-header-line {
+
+}
+
+.table-header-unit {
+    display: inline-block;
+    margin: 0px 13px 0px 0px;
+    position: relative;
+    top: 5px;
+}
+
+.table-simple-unit {
+    display: inline-block;
+    margin: 0px 13px 0px 0px;
+    position: relative;
+    height: 26px;
+    top: 2px;
+    padding-top: 2px;
+}
+
+.tab-col-1 {
+    left: 10px;
+    width: 45px;
+}
+
+.tab-col-2 {
+    left: 40px;
+    width: 45px;
+    /*background-color: #2b8aab;*/
+    text-align: center;
+}
+
+.tab-col-3 {
+    left: 60px;
+    width: 45px;
+    /*background-color: #2b8aab;*/
+    text-align: center;
+}
+
+.tab-col-4 {
+    left: 80px;
+    width: 45px;
+    /*background-color: #2b8aab;*/
+    text-align: center;
+}
+
+.tab-col-5 {
+    left: 100px;
+    width: 45px;
+    /*background-color: #2b8aab;*/
+    text-align: center;
+}
+
+.tab-col-6 {
+    left: 120px;
+    width: 45px;
+    /*background-color: #2b8aab;*/
+    text-align: center;
+}
+
+.tab-col-7 {
+    left: 140px;
+    width: 45px;
+    /*background-color: #2b8aab;*/
+    text-align: center;
+}
+
+.ticker-container {
+    display: inline-block;
+    margin: 0px 0px 0px 60px;
+}
+
+#h1_page_ticker_list {
+    margin-left: 120px;
+}
+
+.pop-up2 {
+    /*display: none;*/
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+    transform: translateY(-40%) translateX(-30%) scale(0);
+    transition: 0.2s ease-in-out;
+}
+
+.pop-up2.active {
+    /*display: block;*/
+    transform: translateY(0%) translateX(0%) scale(1);
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.pop-up2-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: scroll;
+}
+
+.pop-up2-body {
+    margin: auto;
+    min-width: 700px;
+    background-color: #fff;
+    border-radius: 0px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+
+}
+
+.pop-up2-body p {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 20px auto;
+    color: #2C3C4D;
+}
+
+#tab-settings-form {
+    background-color: #f6f6f6;
+    margin: 0px;
+    min-height: 100px;
+    padding: 50px;
+    width: 100%;
+}
+
+.pop-up2-body button {
+    cursor: pointer;
+    display: block;
+    width: 200px;
+    height: 35px;
+    position: relative;
+    margin: 0px auto;
+    padding: 0px 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #8CD8F2;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.pop-up2-body button:hover {
+    background-color: #aaa ;/*#10b1e8;*/
+    color: #555;
+}
+
+.pop-up2-close {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    cursor: pointer;
+    font-size: 21px;
+}
+
+.settings-tab-gear {
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+body{
+    padding: 30px;
+}
+
+.block{
+    max-width: 800px;
+    margin: 0px auto;
+    height: 200px;
+    background-color: grey;
+    border: 5px solid black;
+}
+
+.block div{
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+
+.block__1 {
+    background-color: #2b8aab;
+    float: left;
+    /*padding: 0px 15px 0px 15px;*/
+    margin: 0px 15px 0px 15px;
+    width: 33%;
+}
+
+.block__3 {
+    background-color: #af2c2c;
+}
+
+.block__2 {
+    background-color: #006b1b;
+    color: #ffaaff;
+    /*margin-left: calc(33% + 3px);*/
+}
+

@@ -1,0 +1,93 @@
+
+{% extends 'app1/layout.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'app1/css/chart_01.css' %}">
+
+{% include "app1/side_pnl.html" %}
+
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+          <h1 class="display-4 fw-normal">Main page</h1>
+          <p class="fs-5 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus aliquam animi atque autem deleniti dolor eaque earum harum id illum molestias perferendis qui quis quo reiciendis, saepe, sapiente veniam!</p>
+    </div>
+
+<div style="height: 800px ; margin: 0 auto">
+            <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container" style="display: inline-block; margin: 0 auto; position: relative">
+      <div id="tradingview_bd812"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget(
+      {
+      "width": 600,
+      "height": 400,
+      "symbol": "BINANCE:LINKUSDT.P",
+      "interval": "60",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "enable_publishing": false,
+      "allow_symbol_change": true,
+      "container_id": "tradingview_bd812"
+    }
+      );
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container" style="display: inline-block; margin: 0 auto; position: relative; right: 0">
+      <div id="tradingview_0aa51"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget(
+      {
+      "width": 600,
+      "height": 400,
+      "symbol": "BINANCE:BTCUSDT.P",
+      "interval": "60",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "enable_publishing": false,
+      "allow_symbol_change": true,
+      "container_id": "tradingview_0aa51"
+    }
+      );
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+
+        <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container" style="display: inline-block; margin: 0 auto; position: relative; right: 0">
+      <div id="tradingview_451cd"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript">
+      new TradingView.widget(
+      {
+      "width": 600,
+      "height": 400,
+      "symbol": "BINANCE:ETHUSDT.P",
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "enable_publishing": false,
+      "allow_symbol_change": true,
+      "container_id": "tradingview_451cd"
+    }
+      );
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,394 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'app1/css/bitscr_01.css' %}">
+    <script src="{% static '/app1/js/jquery-3.7.1.min.js' %}"></script>
+    {% block title %}{% endblock %}
+</head>
+
+<body>
+  <header >
+    <div class="header-container" style="max-width: 1200px; width: 80%; margin: 0 auto">
+        <div class="header-top border-bottom">
+            <div class="logo">
+                <img src="{% static 'app1/img/logo_02.svg' %}" alt="" class="logo">
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="background-blue" id="btn-settings">
+                <img class="btn-settings-burger-sign-svg" src="{% static 'app1/img/burger_01.svg' %}" alt="=">
+                <div class="btn-settings-label">SETTINGS</div>
+            </div>
+        </div>
+    </div>
+  </header>
+
+  {% block content %}
+
+  <div class="main-container">
+      <div class="pop-up" id="pop-up">
+          <div class="pop-up-container">
+              <div class="pop-up-body" id="pop-up-body">
+                      <p id="pop-up-title">Get Ticker List</p>
+                      <div id="ticker-list-form">
+
+
+                          <button id="load-list-btn" type="button">LOAD LIST</button>
+                      </div>
+                      <div id="pop-up-close" class="pop-up-close">&#10006</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="pop-up2" id="pop-up2">
+          <div class="pop-up2-container">
+              <div class="pop-up2-body" id="pop2-up-body">
+                      <p id="pop-up2-title">Ticker Settings</p>
+                      <div id="tab-settings-form">
+
+
+                          <div class="tab-header-line tab-row">
+                  <img class="settings-tab-gear-header" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-header-unit tab-col-1">ITEM</div>
+                  <div class="table-header-unit tab-col-2">BASE</div>
+                  <!--<div class="table-header-unit tab-col-3" id="tickerS_TF1">1H</div>-->
+                          <select name="" id="tickerS_TF1" class="table-header-unit tab-col-2" style="width: 60px; left: 50px">
+                              <option value="1m">1m</option>
+                              <option value="5m">5m</option>
+                              <option value="15m">15m</option>
+                              <option value="30m">30m</option>
+                              <option value="1h">1h</option>
+                              <option value="4h">4h</option>
+                              <option value="1d">1d</option>
+                          </select>
+                  <div class="table-header-unit tab-col-4" style="left: 65px">BASE</div>
+                  <!--<div class="table-header-unit tab-col-5" id="tickerS_TF2">15m</div>-->
+                          <select name="" id="tickerS_TF2" class="table-header-unit tab-col-5" style="width: 60px; left: 80px">
+                              <option value="1m">1m</option>
+                              <option value="5m">5m</option>
+                              <option value="15m">15m</option>
+                              <option value="30m">30m</option>
+                              <option value="1h">1h</option>
+                              <option value="4h">4h</option>
+                              <option value="1d">1d</option>
+                          </select>
+                  <div class="table-header-unit tab-col-6" style="left: 100px">BASE</div>
+                  <!--<div class="table-header-unit tab-col-7" id="tickerS_TF3">5m</div>-->
+                          <select name="" id="tickerS_TF3" class="table-header-unit tab-col-7" style="width: 60px; left: 90px">
+                              <option value="1m">1m</option>
+                              <option value="5m">5m</option>
+                              <option value="15m">15m</option>
+                              <option value="30m">30m</option>
+                              <option value="1h">1h</option>
+                              <option value="4h">4h</option>
+                              <option value="1d">1d</option>
+                          </select>
+              </div>
+
+              <div class="line-under-chart"></div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAo</div>
+                  <!--<div class="table-simple-unit tab-col-2" id="tickerS_TF1_SMAo_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF1_SMAo_base_set" class="table-header-unit tab-col-2"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_SMAo_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-4" id="tickerS_TF2_SMAo_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF2_SMAo_base_set" class="table-header-unit tab-col-4"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_SMAo_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-6" id="tickerS_TF3_SMAo_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF3_SMAo_base_set" class="table-header-unit tab-col-6"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_SMAo_value_disp">---</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAo.Δ</div>
+                  <div class="table-simple-unit tab-col-2">-</div>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_SMAoD_value_disp">---</div>
+                  <div class="table-simple-unit tab-col-4">-</div>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_SMAoD_value_disp">---</div>
+                  <div class="table-simple-unit tab-col-6">-</div>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_SMAoD_value_disp">---</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAc</div>
+                  <!--<div class="table-simple-unit tab-col-2" id="tickerS_SF1_SMAc_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF1_SMAc_base_set" class="table-header-unit tab-col-2"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_SMAc_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-4" id="tickerS_TF2_SMAc_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF2_SMAc_base_set" class="table-header-unit tab-col-4"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_SMAc_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-6" id="tickerS_TF3_SMAc_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF3_SMAc_base_set" class="table-header-unit tab-col-6"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_SMAc_value_disp">---</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAc.Δ</div>
+                  <div class="table-simple-unit tab-col-2">-</div>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_SMAcD_value_disp">---</div>
+                  <div class="table-simple-unit tab-col-4">-</div>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_SMAcD_value_disp">---</div>
+                  <div class="table-simple-unit tab-col-6">-</div>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_SMAcD_value_disp">---</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">CCI</div>
+                  <!--<div class="table-simple-unit tab-col-2" id="tickerS_TF1_CCI_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF1_CCI_base_set" class="table-header-unit tab-col-2"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_CCI_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-4" id="tickerS_TF2_CCI_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF2_CCI_base_set" class="table-header-unit tab-col-4"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_CCI_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-6" id="tickerS_TF3_CCI_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF3_CCI_base_set" class="table-header-unit tab-col-6"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_CCI_value_disp">---</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">RSI</div>
+                  <!--<div class="table-simple-unit tab-col-2" id="tickerS_TF1_RSI_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF1_RSI_base_set" class="table-header-unit tab-col-2"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_RSI_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-4" id="tickerS_TF2_RSI_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF2_RSI_base_set" class="table-header-unit tab-col-4"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_RSI_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-6" id="tickerS_TF3_RSI_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF3_RSI_base_set" class="table-header-unit tab-col-6"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_RSI_value_disp">---</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">VOL.SMA</div>
+                  <!--<div class="table-simple-unit tab-col-2" id="tickerS_TF1_VOLSMA_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF1_VOLSMA_base_set" class="table-header-unit tab-col-2"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_VOLSMA_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-4" id="tickerS_TF2_VOLSMA_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF2_VOLSMA_base_set" class="table-header-unit tab-col-4"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_VOLSMA_value_disp">---</div>
+                  <!--<div class="table-simple-unit tab-col-6" id="tickerS_TF3_VOLSMA_base_disp">14</div>-->
+                  <select name="" id="tickerS_TF3_VOLSMA_base_set" class="table-header-unit tab-col-6"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option></select>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_VOLSMA_value_disp">---</div>
+              </div>
+
+              <div class="tab-simple-line tab-row" style="margin-bottom: 50px">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">VOL.SMA.Δ</div>
+                  <div class="table-simple-unit tab-col-2">-</div>
+                  <div class="table-simple-unit tab-col-3" id="tickerS_TF1_VOLSMAD_value_disp">---</div>
+                  <div class="table-simple-unit tab-col-4">-</div>
+                  <div class="table-simple-unit tab-col-5" id="tickerS_TF2_VOLSMAD_value_disp">---</div>
+                  <div class="table-simple-unit tab-col-6">-</div>
+                  <div class="table-simple-unit tab-col-7" id="tickerS_TF3_VOLSMAD_value_disp">---</div>
+              </div>
+
+
+                          <button id="apply-settings-btn" type="button">APPLY SETTINGS</button>
+                      </div>
+                      <div id="pop-up2-close" class="pop-up2-close">&#10006</div>
+              </div>
+          </div>
+      </div>
+
+      <div class="content-container" id="content-container" style="">
+
+
+          <div style="display: inline-block; padding-left: 60px" >
+                           <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container" style="margin: 0 auto 0 auto; position: relative">
+                  <div id="tradingview_bd812"></div>
+
+                  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                  <script type="text/javascript">
+                  new TradingView.widget(
+                  {
+                  "width": 600,
+                  "height": 400,
+                  "symbol": "BINANCE:LINKUSDT.P",
+                  "interval": "60",
+                  "timezone": "Etc/UTC",
+                  "theme": "light",
+                  "style": "1",
+                  "locale": "en",
+                  "enable_publishing": false,
+                  "allow_symbol_change": true,
+                  "container_id": "tradingview_bd812"
+                }
+                  );
+                  </script>
+                </div>
+                <!-- TradingView Widget END -->
+
+              <div class="line-under-chart"></div>
+
+              <div class="tab-header-line tab-row">
+                  <img class="settings-tab-gear-header" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-header-unit tab-col-1">ITEM</div>
+                  <div class="table-header-unit tab-col-2">BASE</div>
+                  <div class="table-header-unit tab-col-3" id="ticker0_TF1">1H</div>
+                  <div class="table-header-unit tab-col-4">BASE</div>
+                  <div class="table-header-unit tab-col-5" id="ticker0_TF2">15m</div>
+                  <div class="table-header-unit tab-col-6">BASE</div>
+                  <div class="table-header-unit tab-col-7" id="ticker0_TF3">5m</div>
+              </div>
+
+              <div class="line-under-chart"></div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAo</div>
+                  <div class="table-simple-unit tab-col-2" id="ticker0_TF1_SMAo_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_SMAo_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-4" id="ticker0_TF2_SMAo_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_SMAo_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-6" id="ticker0_TF3_SMAo_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_SMAo_value_disp">777</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAo.Δ</div>
+                  <div class="table-simple-unit tab-col-2">-</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_SMAoD_value_disp">555</div>
+                  <div class="table-simple-unit tab-col-4">-</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_SMAoD_value_disp">555</div>
+                  <div class="table-simple-unit tab-col-6">-</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_SMAoD_value_disp">555</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAc</div>
+                  <div class="table-simple-unit tab-col-2" id="ticker0_TF1_SMAc_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_SMAc_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-4" id="ticker0_TF2_SMAc_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_SMAc_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-6" id="ticker0_TF3_SMAc_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_SMAc_value_disp">777</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">SMAc.Δ</div>
+                  <div class="table-simple-unit tab-col-2">-</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_SMAcD_value_disp">555</div>
+                  <div class="table-simple-unit tab-col-4">-</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_SMAcD_value_disp">555</div>
+                  <div class="table-simple-unit tab-col-6">-</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_SMAcD_value_disp">555</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">CCI</div>
+                  <div class="table-simple-unit tab-col-2" id="ticker0_TF1_CCI_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_CCI_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-4" id="ticker0_TF2_CCI_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_CCI_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-6" id="ticker0_TF3_CCI_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_CCI_value_disp">777</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">RSI</div>
+                  <div class="table-simple-unit tab-col-2" id="ticker0_TF1_RSI_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_RSI_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-4" id="ticker0_TF2_RSI_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_RSI_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-6" id="ticker0_TF3_RSI_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_RSI_value_disp">777</div>
+              </div>
+
+              <div class="tab-simple-line tab-row">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">VOL.SMA</div>
+                  <div class="table-simple-unit tab-col-2" id="ticker0_TF1_VOLSMA_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_VOLSMA_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-4" id="ticker0_TF2_VOLSMA_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_VOLSMA_value_disp">777</div>
+                  <div class="table-simple-unit tab-col-6" id="ticker0_TF3_VOLSMA_base_disp">14</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_VOLSMA_value_disp">777</div>
+              </div>
+
+              <div class="tab-simple-line tab-row" style="margin-bottom: 50px">
+                  <img class="settings-tab-gear" src="{% static 'app1/img/Settings_logo_blue_02 1.svg' %}" alt="">
+                  <div class="table-simple-unit tab-col-1">VOL.SMA.Δ</div>
+                  <div class="table-simple-unit tab-col-2">-</div>
+                  <div class="table-simple-unit tab-col-3" id="ticker0_TF1_VOLSMAD_value_disp">555</div>
+                  <div class="table-simple-unit tab-col-4">-</div>
+                  <div class="table-simple-unit tab-col-5" id="ticker0_TF2_VOLSMAD_value_disp">555</div>
+                  <div class="table-simple-unit tab-col-6">-</div>
+                  <div class="table-simple-unit tab-col-7" id="ticker0_TF3_VOLSMAD_value_disp">555</div>
+              </div>
+
+          </div>
+
+
+
+      </div>
+  </div>
+
+  {% endblock %}
+
+
+    <div class="footer-container" style="background-color: #344150">
+        <div style="max-width: 1200px; width: 80%; margin: 0 auto">
+              <footer class="pt-4  pt-md-5" >
+                <div class="row">
+                  <div class="col-12 col-md">
+                    <img class="mb-2" src="{% static 'app1/img/logo1.png' %}" alt="" width="24" height="24">
+                    <small class="d-block mb-3 text-muted">&copy; 2022–2023</small>
+                  </div>
+                  <div class="col-6 col-md">
+                    <h5 class="footer-h5-font">Features</h5>
+                    <ul class="list-unstyled text-small">
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-6 col-md">
+                    <h5 class="footer-h5-font">Resources</h5>
+                    <ul class="list-unstyled text-small">
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-6 col-md">
+                    <h5 class="footer-h5-font">About</h5>
+                    <ul class="list-unstyled text-small">
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+                      <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </footer>
+        </div>
+    </div>
+
+
+  <script src="{% static 'app1/js/popup.js' %}"></script>
+  <script src="{% static 'app1/js/content_gen.js' %}"></script>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  </body>
+</html>
+

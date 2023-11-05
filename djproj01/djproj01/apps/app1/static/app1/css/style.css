@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*base styles*/
+
+body {
+    padding: 20px;
+    background-color: #e1e6f2;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.services, .projects {
+    text-align: center;
+}
+
+/*end base styles*/
+
+.header {
+    background-color: #0d6996;
+    width: 1200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.service {
+    width: 290px;
+    height: 200px;
+    background-color: #8ec8d4;
+    display: inline-block;
+    margin: 5px;
+    font-style: 0;
+}
+
+.proj {
+    width: 390px;
+    height: 200px;
+    background-color: #494d87;
+    display: inline-block;
+    margin-right: 5px;
+}
