@@ -95,7 +95,7 @@ function create_chart(ticker_list_array) {
                   '<img class="settings-tab-gear ticker' + index + '" src="static/app1/img/Settings_logo_blue_02 1.svg" alt="">'+
                   '<div class="table-simple-unit tab-col-1">CCI</div>'+
                   '<div class="table-simple-unit tab-col-2" id="ticker' + index + '_TF1_CCI_base_disp">10</div>'+
-                  '<div class="table-simple-unit tab-col-3" id="ticker' + index + '_TF1_CC0_value_disp">777</div>'+
+                  '<div class="table-simple-unit tab-col-3" id="ticker' + index + '_TF1_CCI_value_disp">777</div>'+
                   '<div class="table-simple-unit tab-col-4" id="ticker' + index + '_TF2_CCI_base_disp">10</div>'+
                   '<div class="table-simple-unit tab-col-5" id="ticker' + index + '_TF2_CCI_value_disp">777</div>'+
                   '<div class="table-simple-unit tab-col-6" id="ticker' + index + '_TF3_CCI_base_disp">10</div>'+
@@ -160,19 +160,41 @@ function create_chart(ticker_list_array) {
 }
 
 function SMAo_calc(klines, base) {
-    console.log('kline dict length', Object.keys(klines).length);
+    let dict_len = Object.keys(klines).length;
+    //console.log('kline dict length', dict_len, 'base is', base);
+    let sum = 0;
+    for(let i = 0; i < base; i++){
+        //console.log('dict_len-1 - i', dict_len-1 - i);
+        //console.log('klines[dict_len-1 - i]', klines[dict_len-1 - i]);
+        sum = sum + parseFloat(parseFloat(klines[dict_len-1 - i]['o']));
+    }
+    //console.log('SMAo is: ' , sum / base);
+    return sum / base;
 }
 
 function SMAoD_calc(klines, base) {
 
+    let dict_len = Object.keys(klines).length;
+    let curr_price = parseFloat(klines[dict_len-1]['c']);
+    return (curr_price - SMAo_calc(klines, base)) * 100 - 100;
+
 }
 
 function SMAc_calc(klines, base) {
-
+    let dict_len = Object.keys(klines).length;
+    //console.log('kline dict length', dict_len, 'base is', base);
+    let sum = 0;
+    for(let i = 0; i < base; i++){
+        sum = sum + parseFloat(parseFloat(klines[dict_len-1 - i]['c']));
+    }
+    //console.log('SMAc is: ' , sum / base);
+    return sum / base;
 }
 
 function SMAcD_calc(klines, base) {
-
+    let dict_len = Object.keys(klines).length;
+    let curr_price = parseFloat(klines[dict_len-1]['c']);
+    return (curr_price - SMAc_calc(klines, base)) * 100 - 100;
 }
 
 function CCI_calc(klines, base) {
@@ -184,7 +206,14 @@ function RSI_calc(klines, base) {
 }
 
 function VOLSMA_calc(klines, base) {
-
+    let dict_len = Object.keys(klines).length;
+    console.log('kline dict length', dict_len, 'base is', base);
+    let sum = 0;
+    for(let i = 0; i < base; i++){
+        sum = sum + parseFloat(parseFloat(klines[dict_len-1 - i]['v']));
+    }
+    console.log('VOLSMA is: ', sum / base);
+    return sum / base;
 }
 
 function VOLSMAD_calc(klines, base) {
@@ -453,43 +482,65 @@ function set_indicators_data_to_tables() {
         console.log(tick, kline_TF3_key, ': ');
         console.log(kline_TF3_dict);
 
-        let TF1_SMAo = SMAo_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'SMAo_base_disp']));
-        let TF1_SMAc = SMAc_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'SMAc_base_disp']);
-        let TF1_CCI = CCI_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'CCI_base_disp']));
-        let TF1_RSI = RSI_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'RSI_base_disp']));
-        let TF1_VOLSMA = VOLSMA_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods[kline_TF1_key + 'VOLSMA_base_disp']));
+        let key = 'ticker' + index + '_TF1_SMAo_base_disp';
+        console.log('key is: ', key);
+        console.log('tickers_with_TFs_and_periods[key]', tickers_with_TFs_and_periods['ticker' + index + '_TF1_SMAo_base_disp'])
 
-        let TF2_SMAo = SMAo_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'SMAo_base_disp']));
-        let TF2_SMAc = SMAc_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'SMAc_base_disp']));
-        let TF2_CCI = CCI_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'CCI_base_disp']));
-        let TF2_RSI = RSI_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'RSI_base_disp']));
-        let TF2_VOLSMA = VOLSMA_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods[kline_TF2_key + 'VOLSMA_base_disp']));
+        let TF1_SMAo = SMAo_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_SMAo_base_disp']));
+        let TF1_SMAoD = SMAoD_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_SMAoD_base_disp']));
+        let TF1_SMAc = SMAc_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_SMAc_base_disp']));
+        let TF1_SMAcD = SMAcD_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_SMAcD_base_disp']));
+        let TF1_CCI = CCI_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_CCI_base_disp']));
+        let TF1_RSI = RSI_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_RSI_base_disp']));
+        let TF1_VOLSMA = VOLSMA_calc(kline_TF1_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_VOLSMA_base_disp']));
 
-        let TF3_SMAo = SMAo_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'SMAo_base_disp']));
-        let TF3_SMAc = SMAc_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'SMAc_base_disp']));
-        let TF3_CCI = CCI_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'CCI_base_disp']));
-        let TF3_RSI = RSI_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'RSI_base_disp']));
-        let TF3_VOLSMA = VOLSMA_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods[kline_TF3_key + 'VOLSMA_base_disp']));
+        let TF2_SMAo = SMAo_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF2_SMAo_base_disp']));
+        let TF2_SMAoD = SMAoD_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF2_SMAoD_base_disp']));
+        let TF2_SMAc = SMAc_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF2_SMAc_base_disp']));
+        let TF2_SMAcD = SMAcD_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF1_SMAcD_base_disp']));
+        let TF2_CCI = CCI_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF2_CCI_base_disp']));
+        let TF2_RSI = RSI_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF2_RSI_base_disp']));
+        let TF2_VOLSMA = VOLSMA_calc(kline_TF2_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF2_VOLSMA_base_disp']));
 
-        document.getElementById(kline_TF1_key + '_SMAo_value_disp').innerHTML = '';
-        document.getElementById(kline_TF2_key + '_SMAo_value_disp').innerHTML = '';
-        document.getElementById(kline_TF3_key + '_SMAo_value_disp').innerHTML = '';
+        let TF3_SMAo = SMAo_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF3_SMAo_base_disp']));
+        let TF3_SMAoD = SMAoD_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF3_SMAoD_base_disp']));
+        let TF3_SMAc = SMAc_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF3_SMAc_base_disp']));
+        let TF3_SMAcD = SMAcD_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF3_SMAcD_base_disp']));
+        let TF3_CCI = CCI_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF3_CCI_base_disp']));
+        let TF3_RSI = RSI_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF3_RSI_base_disp']));
+        let TF3_VOLSMA = VOLSMA_calc(kline_TF3_dict, parseInt(tickers_with_TFs_and_periods['ticker' + index + '_TF3_VOLSMA_base_disp']));
 
-        document.getElementById(kline_TF1_key + '_SMAc_value_disp').innerHTML = '';
-        document.getElementById(kline_TF2_key + '_SMAc_value_disp').innerHTML = '';
-        document.getElementById(kline_TF3_key + '_SMAc_value_disp').innerHTML = '';
+        console.log('TF1_SMAo', TF1_SMAo);
+        console.log('TF2_SMAo', TF2_SMAo);
+        console.log('TF3_SMAo', TF3_SMAo);
 
-        document.getElementById(kline_TF1_key + '_CCI_value_disp').innerHTML = '';
-        document.getElementById(kline_TF2_key + '_CCI_value_disp').innerHTML = '';
-        document.getElementById(kline_TF3_key + '_CCI_value_disp').innerHTML = '';
+        document.getElementById('ticker' + index + '_TF1_SMAo_value_disp').innerHTML = TF1_SMAo.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF2_SMAo_value_disp').innerHTML = TF2_SMAo.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF3_SMAo_value_disp').innerHTML = TF3_SMAo.toPrecision(5);
 
-        document.getElementById(kline_TF1_key + '_RSI_value_disp').innerHTML = '';
-        document.getElementById(kline_TF2_key + '_RSI_value_disp').innerHTML = '';
-        document.getElementById(kline_TF3_key + '_RSI_value_disp').innerHTML = '';
+        document.getElementById('ticker' + index + '_TF1_SMAoD_value_disp').innerHTML = TF1_SMAoD.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF2_SMAoD_value_disp').innerHTML = TF2_SMAoD.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF3_SMAoD_value_disp').innerHTML = TF3_SMAoD.toPrecision(5);
 
-        document.getElementById(kline_TF1_key + '_VOLSMA_value_disp').innerHTML = '';
-        document.getElementById(kline_TF2_key + '_VOLSMA_value_disp').innerHTML = '';
-        document.getElementById(kline_TF3_key + '_VOLSMA_value_disp').innerHTML = '';
+        document.getElementById('ticker' + index + '_TF1_SMAc_value_disp').innerHTML = TF1_SMAc.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF2_SMAc_value_disp').innerHTML = TF2_SMAc.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF3_SMAc_value_disp').innerHTML = TF3_SMAc.toPrecision(5);
+
+        document.getElementById('ticker' + index + '_TF1_SMAcD_value_disp').innerHTML = TF1_SMAcD.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF2_SMAcD_value_disp').innerHTML = TF2_SMAcD.toPrecision(5);
+        document.getElementById('ticker' + index + '_TF3_SMAcD_value_disp').innerHTML = TF3_SMAcD.toPrecision(5);
+
+        document.getElementById('ticker' + index + '_TF1_CCI_value_disp').innerHTML = '11';
+        document.getElementById('ticker' + index + '_TF2_CCI_value_disp').innerHTML = '22';
+        document.getElementById('ticker' + index + '_TF3_CCI_value_disp').innerHTML = '33';
+
+        document.getElementById('ticker' + index + '_TF1_RSI_value_disp').innerHTML = '44';
+        document.getElementById('ticker' + index + '_TF2_RSI_value_disp').innerHTML = '55';
+        document.getElementById('ticker' + index + '_TF3_RSI_value_disp').innerHTML = '66';
+
+        document.getElementById('ticker' + index + '_TF1_VOLSMA_value_disp').innerHTML = TF1_VOLSMA.toPrecision(4);
+        document.getElementById('ticker' + index + '_TF2_VOLSMA_value_disp').innerHTML = TF2_VOLSMA.toPrecision(4);
+        document.getElementById('ticker' + index + '_TF3_VOLSMA_value_disp').innerHTML = TF3_VOLSMA.toPrecision(4);
 
     });
 }
