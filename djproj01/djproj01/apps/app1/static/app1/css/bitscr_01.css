@@ -240,43 +240,43 @@ body {
 }
 
 .tab-col-2 {
-    left: 40px;
+    left: 25px;
     width: 45px;
     /*background-color: #2b8aab;*/
     text-align: center;
 }
 
 .tab-col-3 {
-    left: 60px;
-    width: 45px;
+    left: 25px;
+    width: 85px;
     /*background-color: #2b8aab;*/
     text-align: center;
 }
 
 .tab-col-4 {
-    left: 80px;
+    left: 25px;
     width: 45px;
     /*background-color: #2b8aab;*/
     text-align: center;
 }
 
 .tab-col-5 {
-    left: 100px;
-    width: 45px;
+    left: 25px;
+    width: 85px;
     /*background-color: #2b8aab;*/
     text-align: center;
 }
 
 .tab-col-6 {
-    left: 120px;
+    left: 25px;
     width: 45px;
     /*background-color: #2b8aab;*/
     text-align: center;
 }
 
 .tab-col-7 {
-    left: 140px;
-    width: 45px;
+    left: 25px;
+    width: 85px;
     /*background-color: #2b8aab;*/
     text-align: center;
 }
